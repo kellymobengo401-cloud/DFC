@@ -208,7 +208,7 @@ border-radius:12px;
 
 <!-- 🛒 PANIER -->
 <div class="cartbar">
-🛒 Articles: <span id="items">0</span> | Total: <span id="total">0</span> FC
+🛒 Articles: <span id="items">0</span> | Total: <span id="totalPanier">0</span> FC
 </div>
 
 <!-- 🍕 PIZZAS -->
@@ -443,16 +443,18 @@ update();
 
 function update(){
 
-let items=0;
-let total=0;
+let items = 0;
+let total = 0;
 
 for(let i in qty){
-items+=qty[i];
-total+=qty[i]*prix[i];
+items += qty[i];
+total += qty[i] * prix[i];
 }
 
-document.getElementById("items").innerText=items;
-document.getElementById("total").innerText=total;
+document.getElementById("items").innerText = items;
+document.getElementById("totalPanier").innerText = total;
+document.getElementById("totalForm").innerText = total;
+
 }
 
 function send(){
@@ -476,7 +478,7 @@ Adresse:
 ${adresse}
 
 Commande:
-Total: ${document.getElementById("total").innerText} FC`;
+Total: $document.getElementById("totalForm").innerTextFC`;
 
 let url="https://wa.me/243890000444?text="+encodeURIComponent(message);
 
